@@ -1,5 +1,5 @@
 ---
-name: Main
+name: Deploy
 
 on:
   workflow_dispatch:
@@ -7,7 +7,7 @@ on:
   pull_request:
 
 jobs:
-  main:
+  deploy:
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -22,11 +22,9 @@ jobs:
           npx playwright install --with-deps
       - name: Run tests
         run: |
-          cd client
           npx playwright test
       - name: Run build
         run: |
-          cd client
           npm run build
       - uses: actions/upload-artifact@v3
         if: always()

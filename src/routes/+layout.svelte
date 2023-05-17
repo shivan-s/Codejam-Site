@@ -1,3 +1,9 @@
+<script lang="ts">
+	import { title } from '$lib/stores';
+	import Navbar from '$components/Navbar.svelte';
+	import Banner from '$components/Banner.svelte';
+</script>
+
 <svelte:head>
 	<title>TimeEnjoyed's CodeJam</title>
 	<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -8,40 +14,21 @@
 	/>
 </svelte:head>
 
-<div class="flex row">
-	<main class="main-container flex col">
-		<div class="icon top-right" />
-		<div class="top-left">
-			<div class="nav-container sp-bwtn flex col">
-				<button class="nav-btn" id="btn-about">Goal</button>
-				<button class="nav-btn" id="btn-timeline">Timeline</button>
-				<button class="nav-btn" id="btn-rules">Rules</button>
-				<button class="nav-btn" id="btn-prizes">Prizes</button>
-				<button class="nav-btn" id="btn-entries">Entries</button>
-				<button class="nav-btn" id="btn-credits">Credits</button>
+<header>
+	<Navbar />
+</header>
+<main class="main-container flex col">
+	<Banner />
+	<div class="bottom-right">
+		<div class="content-container flex col">
+			<div class="scrollable-content flex col">
+				<h1>{$title}</h1>
+				<slot>main content goes here</slot>
 			</div>
 		</div>
-	</main>
-	<main class="main-container flex col">
-		<div class="bottom-left">
-			<div class="banner">
-				<div class="banner-top">TimeEnjoyed's</div>
-				<div class="banner-bottom">
-					{'< codejam/ >'}
-				</div>
-			</div>
-		</div>
-
-		<div class="bottom-right">
-			<div class="content-container flex col" id="content-container">
-				<div class="scrollable-content flex col" id="scrollable-content">
-					<slot>main content goes here</slot>
-				</div>
-			</div>
-			<div class="content-container-bg" style="z-index: -1" />
-		</div>
-	</main>
-</div>
+	</div>
+</main>
+<footer />
 
 <style>
 	:global(*, *::before, *::after) {
@@ -55,6 +42,8 @@
 		height: 100%;
 	}
 	:global(body) {
+		display: flex;
+		flex-direction: row;
 		line-height: 1.5;
 		background: #323742;
 		font-family: 'Ubuntu Mono', monospace;
@@ -111,38 +100,6 @@
 	:global(.main-container) {
 		flex-wrap: wrap;
 	}
-	.banner-top {
-		font-size: 2em;
-		font-family: 'Liu Jian Mao Cao', cursive;
-	}
-	.banner-bottom {
-		font-size: 4em;
-	}
-	.nav-container {
-		padding: 3em 3em;
-		gap: 3em;
-	}
-	.nav-btn {
-		color: whitesmoke;
-		background: #3f4e69;
-		border-radius: 100px;
-		font-size: 1.1em;
-		width: 10em;
-		height: 3em;
-		text-decoration: none;
-		text-align: center;
-		line-height: 3em;
-	}
-	.nav-btn:hover {
-		filter: brightness(150%);
-		box-shadow: 0.25em 0.25em #f18e8e;
-		transition: filter 0.3s;
-		transition: box-shadow 0.4s;
-		transition-timing-function: ease-in-out;
-	}
-	.nav-btn:active {
-		background: #ab376c;
-	}
 	.bottom-right .content-container {
 		padding: 4em 3em;
 		border-radius: 50px;
@@ -159,17 +116,7 @@
 		/* for Firefox */
 		min-height: 0;
 		overflow: hidden;
-	}
-	.content-container-bg {
-		position: absolute;
-		top: 9.5em;
-		left: 17.5em;
-		padding: 8em 3em;
-		border-radius: 59px;
-		background: #f18e8e;
-		width: 50em;
-		height: 50em;
-		/*background: #f0b7b1;*/
+		box-shadow: 1em 1em #f18e8e;
 	}
 	.scrollable-content {
 		flex: 1;
