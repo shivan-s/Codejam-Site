@@ -28,8 +28,13 @@ npm run dev -- --open
 
 [![Deploy](https://github.com/shivan-s/Codejam-Site/actions/workflows/main.yml/badge.svg)](https://github.com/shivan-s/Codejam-Site/actions/workflows/main.yml)
 
-Uses github actions to deploy on Cloudflare.
+This project usses github actions to deploy onto Cloudflare with every code change.
 
-Make sure you set up secrets.
+1. Make sure secrets are set for the following variables:
 
-TODO
+- `CLOUDFLARE_API_TOKEN`
+- `CLOUDFLARE_AUTHOR_ID`
+
+[Instructions on how to obtain these are here](https://github.com/cloudflare/pages-action).
+
+_WIP_
