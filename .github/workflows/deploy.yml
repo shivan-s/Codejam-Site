@@ -26,17 +26,17 @@ jobs:
       - name: Run build
         run: |
           npm run build
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+      # - uses: actions/upload-artifact@v3
+      #   if: always()
+      #   with:
+      #     name: playwright-report
+      #     path: playwright-report/
+      #     retention-days: 30
       - name: Publish to Cloudflare
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: codejam-demo
-          directory: .svelte-kit/cloudflare
+          directory: ./.svelte-kit/cloudflare
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
