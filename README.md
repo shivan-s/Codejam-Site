@@ -35,4 +35,6 @@ This project usses github actions to deploy onto Cloudflare with every code chan
 
 [Instructions on how to obtain these are here](https://github.com/cloudflare/pages-action).
 
+2. Make sure Github Actions permissions is set to Read and Write using a `GITHUB_TOKEN`.
+
 _WIP_
