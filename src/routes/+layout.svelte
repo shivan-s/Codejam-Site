@@ -17,17 +17,19 @@
 <header>
 	<Navbar />
 </header>
-<main class="main-container flex col">
+<div class="flex col">
 	<Banner />
 	<div class="bottom-right">
 		<div class="content-container flex col">
 			<div class="scrollable-content flex col">
-				<h1>{$title}</h1>
-				<slot>main content goes here</slot>
+				<main>
+					<h1>{$title}</h1>
+					<slot>main content goes here</slot>
+				</main>
 			</div>
 		</div>
 	</div>
-</main>
+</div>
 <footer />
 
 <style>
@@ -43,6 +45,7 @@
 	}
 	:global(body) {
 		display: flex;
+		justify-content: center;
 		flex-direction: row;
 		line-height: 1.5;
 		background: #323742;
@@ -110,7 +113,7 @@
 	}
 	.content-container {
 		background: transparent;
-		width: 50em;
+		min-width: 50em;
 		max-height: 50em;
 		gap: 2em;
 		/* for Firefox */
@@ -128,6 +131,7 @@
 
 		/* for Firefox */
 	}
+
 	/*.scrollable-content::before {*/
 	/*  content: '';*/
 	/*  display: block;*/
