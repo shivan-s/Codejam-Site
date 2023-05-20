@@ -1,11 +1,7 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	type NavLink = {
-		label: string;
-		pathname: string;
-	};
 
-	const navLinks: NavLink[] = [
+	const navLinks: { label: string; pathname: string }[] = [
 		{ label: 'Goal', pathname: '/goal' },
 		{ label: 'Timeline', pathname: '/timeline' },
 		{ label: 'Rules', pathname: '/rules' },
@@ -15,29 +11,24 @@
 	];
 </script>
 
-<div class="main-container">
-	<div class="icon top-right" />
-	<div class="top-left">
-		<div class="nav-container sp-bwtn flex col">
-			{#each navLinks as { label, pathname }}
-				<a
-					href={pathname}
-					class={$page.url.pathname === pathname ? 'nav-btn nav-btn-active' : 'nav-btn'}>{label}</a
-				>
-			{/each}
-		</div>
-	</div>
+<div class="nav-container sp-bwtn flex col">
+	{#each navLinks as { label, pathname }}
+		<a
+			href={pathname}
+			class={$page.url.pathname === pathname ? 'nav-btn nav-btn-active' : 'nav-btn'}>{label}</a
+		>
+	{/each}
 </div>
 
 <style>
 	.nav-container {
 		display: none;
-		padding: 3em 3em;
+		padding: 11em 3em 0em;
 		gap: 3em;
 	}
 	.nav-btn {
-		color: whitesmoke;
-		background: #3f4e69;
+		color: var(--text-color);
+		background: var(--tertiary-color);
 		border-radius: 100px;
 		font-size: 1.1em;
 		width: 10em;
@@ -47,50 +38,23 @@
 		line-height: 3em;
 	}
 	.nav-btn:hover {
-		box-shadow: 0.25em 0.25em #f18e8e;
+		box-shadow: 0.25em 0.25em var(--secondary-color);
 		filter: brightness(125%);
 		transition: filter 0.3s;
 		transition: box-shadow 0.4s;
 		transition-timing-function: ease-in-out;
 	}
 	.nav-btn:active {
-		background: #ab376c;
+		background: var(--secondary-color);
 	}
 
 	.nav-btn-active {
-		box-shadow: 0.25em 0.25em #f18e8e;
+		box-shadow: 0.25em 0.25em var(--accent-color);
 	}
 
 	@media only screen and (min-width: 768px) {
 		.nav-container {
 			display: flex;
-			padding: 3em 3em;
-			gap: 3em;
-		}
-		.nav-btn {
-			color: whitesmoke;
-			background: #3f4e69;
-			border-radius: 100px;
-			font-size: 1.1em;
-			width: 10em;
-			height: 3em;
-			text-decoration: none;
-			text-align: center;
-			line-height: 3em;
-		}
-		.nav-btn:hover {
-			box-shadow: 0.25em 0.25em #f18e8e;
-			filter: brightness(125%);
-			transition: filter 0.3s;
-			transition: box-shadow 0.4s;
-			transition-timing-function: ease-in-out;
-		}
-		.nav-btn:active {
-			background: #ab376c;
-		}
-
-		.nav-btn-active {
-			box-shadow: 0.25em 0.25em #f18e8e;
 		}
 	}
 </style>
